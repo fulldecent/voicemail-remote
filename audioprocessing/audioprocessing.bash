@@ -1,42 +1,20 @@
 #!/bin/bash
 #
-# Reads text from STDIN
-# Produces ./msg-robot.wav
+# USAGE
+# ./audioprocessing.bash SPEECH_SCRIPT DIALING_SCRIPT
+#
+# Text from SPEECH_SCRIPT is voice synthesized into the file synthesized.wav
+# Then sound files noted in DIALING_SCRIPT are concatenated in order
+# specified to create ./processed.wav
 #
 
 
 #
 # Synthesize the message from STDIN
 #
-#text2wave < $BASE/msg.txt > $BASE/synthesized.wav
-say -o synthesized.aif
 
-
-#
-# SCRIPT is a list of audio files that, when concatenated, will form the
-# full sound that is played on a voice call to your voicemail system
-#
-
-# VM system says "Please enter your phone number"
-SCRIPT="p p p p p p 2 p 6 p 7 p 7 p 3 p 8 p 4 p 2 p 0 p 1 p pound p p p"
-
-# VM system says "Please enter your password"
-SCRIPT="$SCRIPT p p p p pound p p p p p p p p p 8 p p 1 p p 2 p p 2 p p pound"
-
-# At the welcome menu, you need to access the "change OGM" menu
-SCRIPT="$SCRIPT p p p p 5 p p 2 p p 1 p p 1 p p"
-
-# Here I include a spoken intro
-SCRIPT="$SCRIPT spoken-intro"
-
-# ... and then the call script
-SCRIPT="$SCRIPT synthesized"
-
-# ... and then end the recording
-SCRIPT="$SCRIPT pound"
-
-# VM system says "Press one to confirm your new message"
-SCRIPT="$SCRIPT p p p p 1 p p"
+cat $1 > say -o synthesized.aif
+#cat $1 > text2wave -o synthesized.aif
 
 
 #
@@ -44,7 +22,7 @@ SCRIPT="$SCRIPT p p p p 1 p p"
 #
 
 rm -f ./processed.wav ./processed.raw
-for a in $SCRIPT
+for a in $(grep -v "#" $2)
 do
   sox $a.* -t raw -r 44100 -c1 -e signed-integer - >> ./processed.raw
 done

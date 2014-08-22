@@ -3,7 +3,8 @@
 #
 # Point to this file from your cron script
 #
-# find your voicemail access number at http://bridog.net/cellular/voicemail-access-numbers/
+# find your voicemail access number at
+# http://bridog.net/cellular/voicemail-access-numbers/
 #
 
 #
@@ -17,9 +18,9 @@
 #
 
 
-./callscript/callscript-example1.pl > /tmp/script
+./callscript/speechscript-example1.pl > /tmp/script
 
-./audioprocessing/audioprocessing.bash < /tmp/script
+./audioprocessing/audioprocessing.bash /tmp/script callscript/dialingscript-example.txt
 
 sipcmd -P sip -u [username] -c [password] -w [server] -x "c;w200;d8005551212;ws3000;vprocessed.wav;h" 
 

@@ -1,0 +1,31 @@
+#
+# Lines starting with # are ignored in this file
+#
+# This dialing script is a list of audio files that, when concatenated,
+# will form the full sound that is played on a voice call to your voicemail
+# system.
+#
+# "synthesized" is a special file which is a synthesized voice audio
+# which will be generated based on your speech script.
+#
+
+# VM system says "Please enter your phone number"
+p p p p p p 2 p 6 p 7 p 7 p 3 p 8 p 4 p 2 p 0 p 1 p pound p p p
+
+# VM system says "Please enter your password"
+p p p p pound p p p p p p p p p 8 p p 1 p p 2 p p 2 p p pound
+
+# At the welcome menu, you need to access the "change OGM" menu
+p p p p 5 p p 2 p p 1 p p 1 p p
+
+# Here I include a spoken intro
+spoken-intro
+
+# ... and then the call script
+synthesized
+
+# ... and then end the recording
+pound
+
+# VM system says "Press one to confirm your new message"
+p p p p 1 p p
