@@ -25,7 +25,7 @@ Prerequisites include:
   * php, perl and other script interpreters (needed to run all the examples)
 
 
-The call script
+Call script
 -------------------------
 
 A speech script is used to customize text which will be read by a synthesized voice on your outgoing message. You can use scripts in any language to generate this file. Some examples are included, please share your own scripts with a pull request!
