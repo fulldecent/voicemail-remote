@@ -36,7 +36,7 @@ A dialing script is used to access voicemail system, enter your PIN, and navigat
 Audio processing
 -------------------------
 
-This stitches together dial tones and synthesized speech as specified by your call script. The output is a single audio file.
+This stitches together DTMF tones and synthesized speech as specified by your call script. The output is a single audio file.
 
 
 Playback
